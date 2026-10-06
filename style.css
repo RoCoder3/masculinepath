@@ -325,7 +325,8 @@ a { color: inherit; }
   .fit__col + .fit__col { margin-top: 0; }
   .fit__col li:last-child { border-bottom: 1px solid var(--line); }
 }
-.care { margin-top: 3rem; color: var(--text-soft); max-width: var(--measure); }
+.care { margin-top: 3rem; color: var(--text-soft); max-width: none; }
+@media (min-width: 900px) { .care__line { white-space: nowrap; } }
 
 /* ---------- FAQ ---------- */
 .faq { border-top: 1px solid var(--line); }
