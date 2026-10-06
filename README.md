@@ -8,8 +8,9 @@ a push to `main` goes to production, any other branch gets a preview.
 
 ## Files
 
-- `index.html` · the page: hero, what I help with (five areas), The Honest Read, who it is and
-  isn't for, two short answers, about Dragos, the final booking CTA, footer
+- `index.html` · the page: hero, what I help with (moments, the gap, 5 areas), about Dragos,
+  The Honest Read (3 steps and prices), who it is and isn't for, FAQ, the closing booking CTA,
+  footer
 - `style.css` · brand palette and type (Cormorant Garamond + Satoshi), mobile first
 - `script.js` · booking link wiring, the optional Cal.com inline embed, quiet scroll reveals
 - `favicon.svg` · the single copper stroke
@@ -24,7 +25,7 @@ const BOOKING_URL = "https://cal.com/dragos-masculinepath/honest-read";
 const INLINE_EMBED = true;
 ```
 
-Every "Book your free Honest Read" button gets its link from `BOOKING_URL`. When it is a cal.com
+Every "Book a free session" button gets its link from `BOOKING_URL`. When it is a cal.com
 link and `INLINE_EMBED` is true, the Cal.com inline calendar loads under the final CTA (lazily,
 when that section comes near the viewport), using the same event, dark theme and the copper
 accent. Set `INLINE_EMBED` to `false` to keep the buttons only. If `BOOKING_URL` ever contains
