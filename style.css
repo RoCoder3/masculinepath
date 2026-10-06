@@ -383,3 +383,6 @@ a { color: inherit; }
   .btn:hover { transform: none; }
 }
 .nowrap { white-space: nowrap; }
+.cta--left { align-items: flex-start; margin-top: 2.25rem; }
+.lines--after-cta { margin-top: 2.75rem; }
+.prices + .cta--left { margin-top: 2.5rem; }
