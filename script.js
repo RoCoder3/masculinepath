@@ -1,47 +1,86 @@
-// Sticky nav opacity on scroll
-const nav = document.getElementById('nav');
-const onScroll = () => {
-  if (window.scrollY > 20) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-};
-window.addEventListener('scroll', onScroll, { passive: true });
-onScroll();
+/* =====================================================================
+   BOOKING. The only place the booking link lives.
 
-// Mobile nav toggle
-const toggle = document.getElementById('navToggle');
-const links = document.getElementById('navLinks');
-toggle.addEventListener('click', () => {
-  const open = links.classList.toggle('is-open');
-  toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-});
-links.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    links.classList.remove('is-open');
-    toggle.setAttribute('aria-expanded', 'false');
-  });
-});
+   BOOKING_URL is the Cal.com event for The Honest Read (30 minutes).
+   Every "Book your free Honest Read" button on the page uses this value,
+   and when it is a cal.com link the inline Cal.com calendar under the
+   final CTA uses it too (calLink is derived from the path).
+   To change the event, change this one line. Set INLINE_EMBED to false
+   to keep the buttons only.
 
-// Fade-in on scroll
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible');
-      io.unobserve(entry.target);
+   Safety net: if this is ever set back to a placeholder containing
+   "REPLACE-ME", the buttons fall back to the Instagram DM link and the
+   embed stays hidden.
+   ===================================================================== */
+const BOOKING_URL = "https://cal.com/dragos-masculinepath/honest-read";
+const INLINE_EMBED = true;
+
+const INSTAGRAM_DM_URL = "https://ig.me/m/masculinepath.men";
+
+(function () {
+  "use strict";
+
+  const isPlaceholder = /REPLACE-ME/i.test(BOOKING_URL);
+  let calLink = null;
+  try {
+    const u = new URL(BOOKING_URL);
+    if (!isPlaceholder && /(^|\.)cal\.com$/i.test(u.hostname)) {
+      calLink = u.pathname.replace(/^\/+|\/+$/g, "");
     }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } catch (e) { /* malformed URL: buttons fall back below */ }
 
-// FAQ accordion
-document.querySelectorAll('.faq__q').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    const panel = btn.nextElementSibling;
-    btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-    if (expanded) {
-      panel.style.maxHeight = null;
+  const target = isPlaceholder ? INSTAGRAM_DM_URL : BOOKING_URL;
+  document.querySelectorAll("[data-book]").forEach(function (a) {
+    a.href = target;
+    a.rel = "noopener";
+    if (isPlaceholder) a.setAttribute("data-booking-pending", "");
+  });
+  if (isPlaceholder) {
+    console.warn("[Masculine Path] BOOKING_URL is still a placeholder. Booking buttons point to the Instagram DM until it is set in script.js.");
+  }
+
+  /* ---------- Cal.com inline embed, loaded only when the final section is near ---------- */
+  const embedEl = document.getElementById("cal-inline");
+  if (INLINE_EMBED && calLink && embedEl) {
+    const loadCal = function () {
+      embedEl.hidden = false;
+      /* Official Cal.com embed loader */
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      window.Cal("init", "honest-read", { origin: "https://cal.com" });
+      window.Cal.ns["honest-read"]("inline", {
+        elementOrSelector: "#cal-inline",
+        calLink: calLink,
+        config: { layout: "month_view", theme: "dark" }
+      });
+      window.Cal.ns["honest-read"]("ui", {
+        theme: "dark",
+        cssVarsPerTheme: { dark: { "cal-brand": "#b87333" } },
+        hideEventTypeDetails: false,
+        layout: "month_view"
+      });
+    };
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); loadCal(); }
+      }, { rootMargin: "600px 0px" });
+      io.observe(document.getElementById("book"));
     } else {
-      panel.style.maxHeight = panel.scrollHeight + 'px';
+      loadCal();
     }
-  });
-});
+  }
+
+  /* ---------- Quiet reveal on scroll ---------- */
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const items = document.querySelectorAll(".reveal");
+  if (reduce || !("IntersectionObserver" in window)) {
+    items.forEach(function (el) { el.classList.add("is-visible"); });
+    return;
+  }
+  document.documentElement.classList.add("reveal-on");
+  const rio = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { entry.target.classList.add("is-visible"); rio.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  items.forEach(function (el) { rio.observe(el); });
+})();
