@@ -8,9 +8,9 @@ a push to `main` goes to production, any other branch gets a preview.
 
 ## Files
 
-- `index.html` · the page: hero, what I help with (moments, the gap, 5 areas), about Dragos,
-  The Honest Read (3 steps and prices), who it is and isn't for, FAQ, the closing booking CTA,
-  footer
+- `index.html` · the page: hero, what I help with (feeling behind, 5 moments, the gap, 5 areas),
+  about Dragos, the free first session (3 steps and prices), who it is and isn't for, FAQ, and
+  the closing CTA (button, Instagram line, Cal.com calendar), footer
 - `style.css` · brand palette and type (Cormorant Garamond + Satoshi), mobile first
 - `script.js` · booking link wiring, the optional Cal.com inline embed, quiet scroll reveals
 - `favicon.svg` · the single copper stroke
@@ -21,7 +21,7 @@ a push to `main` goes to production, any other branch gets a preview.
 `script.js`, top of the file:
 
 ```js
-const BOOKING_URL = "https://cal.com/dragos-masculinepath/honest-read";
+const BOOKING_URL = "https://cal.com/dragos-masculinepath/free-session";
 const INLINE_EMBED = true;
 ```
 

@@ -104,8 +104,6 @@ a { color: inherit; }
   color: var(--accent);
   margin-top: 2rem !important;
 }
-.beat--center { text-align: center; }
-.lede { color: var(--text-soft); margin-bottom: 2rem; }
 
 /* ---------- Layout ---------- */
 .wrap {
@@ -147,6 +145,9 @@ a { color: inherit; }
   font-size: clamp(3rem, 13.5vw, 6rem);
   line-height: 1;
   letter-spacing: -0.015em;
+  max-width: 6.6em;
+  margin: 0 auto;
+  text-wrap: balance;
 }
 .hero__paren {
   margin-top: 0.9rem;
@@ -159,6 +160,8 @@ a { color: inherit; }
 }
 .hero__paren em { color: var(--accent); font-style: italic; }
 .hero__sub {
+  max-width: 30rem;
+  text-wrap: balance;
   margin: 2.25rem auto 0;
   font-size: clamp(1.0625rem, 4.4vw, 1.25rem);
   line-height: 1.6;
@@ -198,7 +201,7 @@ a { color: inherit; }
 .cta__alt a:hover { color: var(--accent); }
 
 /* ---------- Lines: short, one thought per line ---------- */
-.lines p, .area p, .steps li, .moments li, .fit__col li, .faq details p { text-wrap: pretty; }
+.lines p, .prose p, .steps li, .moments li, .fit__col li, .faq details p { text-wrap: pretty; }
 .lines p + p { margin-top: 1.5rem; }
 .lines .beat { margin-top: 2.25rem; }
 
@@ -236,7 +239,12 @@ a { color: inherit; }
   font-family: var(--display); font-weight: 600;
   font-size: 1.75rem; line-height: 1.2; margin: 0 0 0.5rem;
 }
-.area p { color: var(--text-soft); line-height: 1.65; }
+.area__list { list-style: none; padding: 0; margin: 0; }
+.area__list li { position: relative; padding: 0.3rem 0 0.3rem 1.25rem; color: var(--text-soft); line-height: 1.5; text-wrap: pretty; }
+.area__list li::before {
+  content: ""; position: absolute; left: 0; top: 1.05rem;
+  width: 0.5rem; height: 1px; background: var(--accent);
+}
 
 /* ---------- Steps + prices ---------- */
 .steps { list-style: none; padding: 0; counter-reset: s; margin: 0.5rem 0 2.75rem; }
@@ -344,16 +352,9 @@ a { color: inherit; }
 
 /* ---------- Final ---------- */
 .section--final { padding-bottom: calc(var(--space) * 0.85); }
-.mark { display: block; width: 1px; height: 3.5rem; background: var(--muted); opacity: 0.6; margin: 0 auto 2.5rem; }
-.h2--final { font-size: clamp(2.75rem, 11vw, 4.5rem); margin-bottom: 1rem; }
-.final__line {
-  font-family: var(--display); font-style: italic; font-weight: 600;
-  font-size: clamp(1.5rem, 5.6vw, 2rem); color: var(--accent);
-}
-.final__small { margin-top: 1.25rem; color: var(--text-soft); font-size: 0.9375rem; }
-.cta--center { margin-top: 2.25rem; }
+.cta--center { margin-top: 0; }
 .embed {
-  max-width: 60rem; margin: 4rem auto 0; padding: 0 var(--gutter);
+  max-width: 60rem; margin: 3rem auto 0; padding: 0 var(--gutter);
   min-height: 34rem;
 }
 
@@ -381,3 +382,4 @@ a { color: inherit; }
   .btn, .faq summary::after { transition: none; }
   .btn:hover { transform: none; }
 }
+.nowrap { white-space: nowrap; }
