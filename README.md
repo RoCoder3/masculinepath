@@ -9,8 +9,8 @@ a push to `main` goes to production, any other branch gets a preview.
 ## Files
 
 - `index.html` · the page, in this order: hero, what I help with, who I am, how it starts
-  (the discovery call, 3 steps), who it's for, what we work on (5 areas), prices and packages, FAQ, and the closing CTA
-  (button, Instagram line, Cal.com calendar), then the footer. "Book a free discovery call" appears 4 times
+  (the discovery call, 3 steps), who it's for, what we work on (5 areas), FAQ, and the closing CTA
+  (button, Instagram line, Cal.com calendar), then the footer. "Book a free discovery call" appears 3 times
 - `style.css` · brand palette and type (Cormorant Garamond + Satoshi), mobile first
 - `script.js` · booking link wiring, the optional Cal.com inline embed, quiet scroll reveals
 - `favicon.svg` · the single copper stroke

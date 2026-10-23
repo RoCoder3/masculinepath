@@ -246,7 +246,7 @@ a { color: inherit; }
   width: 0.5rem; height: 1px; background: var(--accent);
 }
 
-/* ---------- Steps + prices ---------- */
+/* ---------- Steps ---------- */
 .steps { list-style: none; padding: 0; counter-reset: s; margin: 0.5rem 0 2.75rem; }
 .steps li {
   counter-increment: s;
@@ -263,25 +263,6 @@ a { color: inherit; }
   color: var(--accent);
 }
 .steps strong { display: block; color: var(--text); font-weight: 700; font-size: 1.125rem; margin-bottom: 0.3rem; }
-.prices {
-  width: 100%;
-  margin-top: 2.5rem;
-  border-collapse: collapse;
-  font-variant-numeric: lining-nums tabular-nums;
-}
-.prices th, .prices td {
-  padding: 1rem 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  text-align: left;
-  font-weight: 500;
-}
-.prices th { color: var(--text-soft); font-weight: 400; }
-.prices td {
-  text-align: right;
-  font-family: var(--display); font-weight: 600; font-size: 1.5rem; color: var(--text);
-}
-.prices__note { margin-top: 1rem; font-size: 0.9375rem; color: var(--text-soft); }
 .visually-hidden {
   position: absolute !important; width: 1px; height: 1px; overflow: hidden;
   clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
@@ -386,4 +367,3 @@ a { color: inherit; }
 .nowrap { white-space: nowrap; }
 .cta--left { align-items: flex-start; margin-top: 2.25rem; }
 .lines--after-cta { margin-top: 2.75rem; }
-.prices + .cta--left { margin-top: 2.5rem; }
