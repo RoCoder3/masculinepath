@@ -15,7 +15,7 @@
 const BOOKING_URL = "https://cal.com/dragos-masculinepath/free-discovery-call";
 const INLINE_EMBED = true;
 
-const INSTAGRAM_DM_URL = "https://ig.me/m/masculinepath.men";
+const INSTAGRAM_DM_URL = "https://ig.me/m/dragosmasculinity";
 
 (function () {
   "use strict";
