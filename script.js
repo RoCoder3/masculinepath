@@ -2,7 +2,7 @@
    BOOKING. The only place the booking link lives.
 
    BOOKING_URL is the Cal.com event for the free 30-minute discovery call.
-   Every "Book a free discovery call" button on the page uses this value,
+   Every "Book your free call" button on the page uses this value,
    and when it is a cal.com link the inline Cal.com calendar under the
    final CTA uses it too (calLink is derived from the path).
    To change the event, change this one line. Set INLINE_EMBED to false

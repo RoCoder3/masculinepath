@@ -9,8 +9,8 @@ a push to `main` goes to production, any other branch gets a preview.
 ## Files
 
 - `index.html` · the page, in this order: hero, what I help with, who I am, how it starts
-  (the discovery call, 3 steps), who it's for, what we work on (5 areas), FAQ, and the closing CTA
-  (button, Instagram line, Cal.com calendar), then the footer. "Book a free discovery call" appears 3 times
+  (the discovery call, 3 steps), who it's for, what we work on (3 areas: mindset, understanding women, masculinity), FAQ (8 questions), and the closing CTA
+  (button, Instagram line, Cal.com calendar), then the footer. "Book your free call" appears 3 times
 - `style.css` · brand palette and type (Cormorant Garamond + Satoshi), mobile first
 - `script.js` · booking link wiring, the optional Cal.com inline embed, quiet scroll reveals
 - `favicon.svg` · the single copper stroke
@@ -25,7 +25,7 @@ const BOOKING_URL = "https://cal.com/dragos-masculinepath/free-discovery-call";
 const INLINE_EMBED = true;
 ```
 
-Every "Book a free discovery call" button gets its link from `BOOKING_URL`. When it is a cal.com
+Every "Book your free call" button gets its link from `BOOKING_URL`. When it is a cal.com
 link and `INLINE_EMBED` is true, the Cal.com inline calendar loads under the final CTA (lazily,
 when that section comes near the viewport), using the same event, dark theme and the copper
 accent. Set `INLINE_EMBED` to `false` to keep the buttons only. If `BOOKING_URL` ever contains
