@@ -21,7 +21,7 @@ a push to `main` goes to production, any other branch gets a preview.
 `script.js`, top of the file:
 
 ```js
-const BOOKING_URL = "https://cal.com/dragos-masculinepath/free-discovery-call";
+const BOOKING_URL = "https://cal.com/dragos-masculinepath/call-with-dragos";
 const INLINE_EMBED = true;
 ```
 
