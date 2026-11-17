@@ -94,6 +94,9 @@ a { color: inherit; }
 }
 .h3--small { font-size: clamp(1.5rem, 5vw, 1.875rem); margin-top: 3.5rem; }
 .prose p + p { margin-top: 1.1rem; }
+.about-head { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; margin-bottom: 1.75rem; }
+.about-head .h2 { margin-bottom: 0; }
+.about-photo { flex: none; width: clamp(5.5rem, 24vw, 9rem); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover; }
 .prose p { text-wrap: pretty; }
 .beat {
   font-family: var(--display);
