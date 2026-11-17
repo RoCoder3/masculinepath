@@ -96,7 +96,7 @@ a { color: inherit; }
 .prose p + p { margin-top: 1.1rem; }
 .about-head { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; margin-bottom: 1.75rem; }
 .about-head .h2 { margin-bottom: 0; }
-.about-photo { flex: none; width: clamp(5.5rem, 24vw, 9rem); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover; }
+.about-photo { flex: none; width: clamp(4.5rem, 20vw, 6.75rem); height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover; }
 .prose p { text-wrap: pretty; }
 .beat {
   font-family: var(--display);
